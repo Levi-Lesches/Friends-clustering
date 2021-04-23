@@ -1,10 +1,12 @@
 from csv import DictWriter
 import random
-
+from pathlib import Path
 from person import Person
 
-NUM_PEOPLE = 200
-filename = "data.csv"
+NUM_PEOPLE = 370
+
+data_file = (r"data\people.csv")
+metrics_file = Path(r"data\metrics.csv")
 
 choices = {
 	"Age": range(14, 19),
@@ -19,7 +21,8 @@ def generate_people(): return [
 ]
 
 def save(data): 
-	with open(filename, "w", newline = "") as file: 
+	metrics_file.unlink(missing_ok = True)
+	with open(data_file, "w", newline = "") as file: 
 		writer = DictWriter(file, ["ID"] + list(choices.keys()))
 		writer.writeheader()
 		for index, row in enumerate(data, start = 1): 
