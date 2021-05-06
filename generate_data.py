@@ -1,7 +1,6 @@
 from csv import DictWriter
-import random
 from pathlib import Path
-from person import Person
+import random
 
 NUM_PEOPLE = 370
 
